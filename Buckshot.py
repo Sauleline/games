@@ -80,12 +80,13 @@ def shoot(who, at, bullet, sawn):
         output[1] = 1
     return output
 
-def glass():
+def glass(who):
     shell = deck[0]
-    if shell == 1:
-        print("█")
-    else:
-        print("▒")
+    if who == "you":
+        if shell == 1:
+            print("█")
+        else:
+            print("▒")
     return shell
 
 def beer(bullet):
@@ -96,33 +97,33 @@ def beer(bullet):
 
 # This is here cause i can't be bothered to copy paste it down at where you draw it
 def godWaiver():
-    print("\n\n\tThis General Release (\"Release\") is made on 22 da█████████████████████████████████ at                       a")
-    print("\t████████████████████████████████ (\"Releasor\") and ████████████████████████████████████ (\"Releasee\").          a")
-    print("\t\t1. Releasor and anyone claiming on Releasor's behalf r██████████████████████scharges                  a")
-    print("\t\tReleasees and its affiliate████uccessors, officers, empl██████████████████ives,                       a")
-    print("\t\tpartners, agents and anyo████████ng through them (c█████████████████████eased Parties\")              a")
-    print("\t\tin their individual and/or█████orate capacities from any ████████claims, liabilities,                 a")
-    print("\t\tobligations, p██mises, agre██ents, disputes, demands, damages███auses of action of any                a")
-    print("\t\tn███re ███ kind, known or ██known, which Releasor has or ever ██d or may in the future                a")
-    print("\t\thav████████████leasees or any of the Released Parties arising o██ of or relating to: the              a")
-    print("\t\t██████████n of a contractual relationship between the Releasor a██ the Releasee (\"Claims\").           a")
-    print("\t\t████████ch███e for the release of Claims, Releasee will provide█Re██asor a payment in the             a")
-    print("\t\tamoun████ $1██000.00. In consideratio▓▓▓▓▓▓▓ch payment, Releas█r ag██es to accept the payment         a")
-    print("\t\tas full██nd c█mplete settlement a▓▓▓▓▓▓▓▓▓▓▓▓ion of any prese█t and██rospective claims.               a")
-    print("\t\t3. This██elease shall not be in any▓▓▓▓▓▓▓nstrued as an admissio█ by the Releasee that                a")
-    print("\t\tit has█a█ted wrongfully with respe▓▓▓▓▓ Releasor or any other preson█ that it admits                  a")
-    print("\t\tliabi█it█ or responsibility at an▓▓time for any purpose, or that Re██asor has any rights              a")
-    print("\t\twhats█ev██ against the Releasee.  ▓                       ▓▓▓▓▓                                       a")
-    print("\t\t4. Th█s release shall ▒▒ binding u▓▓n the parties and th▓▓▓▓▓▓▓▓▓▓tive heirs, administrators,         a")
-    print("\t\tperso█al representat▒▒▒▒▒ executors, successors and a▓▓▓▓▓▓▓▓▓▓▓▓▓▓or has the authority to            a")
-    print("\t\trelea██ the Clai▒▒▒▒▒▒▒▒▒▒▒▒▒▒ assigned or trans▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ any other party. The             a")
-    print("\t\tprovisions of thi▒▒▒▒▒▒▒▒▒▒are severable. If an▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ to be invalid or                   a")
-    print("\t\tunenforceable, it s▒▒▒▒▒not affect the validi▓▓▓▓▓▓▓▓▓▓▓▓▓▓bility of any other provision.             a")
-    print("\t\tThis Release consti▒▒▒es the entire agreement b▓▓▓▓▓▓▓▓▓▓ parties and supersedes any and              a")
-    print("\t\tall prior oral or ▒▒▒▒ten agreements or underst▓▓▓▓ngs between the parties.                           a")
-    print("\n\n\tSIGN HERE:                                                                                                    a\n")
-    print("\tGOD                                                                                                           a")
-    print("\t______                                                                                                        a")
+    print("\n\n\tThis General Release (\"Release\") is made on 22 da█████████████████████████████████ at")
+    print("\t████████████████████████████████ (\"Releasor\") and ████████████████████████████████████ (\"Releasee\").")
+    print("\t\t1. Releasor and anyone claiming on Releasor's behalf r██████████████████████scharges")
+    print("\t\tReleasees and its affiliate████uccessors, officers, empl██████████████████ives,")
+    print("\t\tpartners, agents and anyo████████ng through them (c█████████████████████eased Parties\")")
+    print("\t\tin their individual and/or█████orate capacities from any ████████claims, liabilities,")
+    print("\t\tobligations, p██mises, agre██ents, disputes, demands, damages███auses of action of any")
+    print("\t\tn███re ███ kind, known or ██known, which Releasor has or ever ██d or may in the future")
+    print("\t\thav████████████leasees or any of the Released Parties arising o██ of or relating to: the")
+    print("\t\t██████████n of a contractual relationship between the Releasor a██ the Releasee (\"Claims\").")
+    print("\t\t████████ch███e for the release of Claims, Releasee will provide█Re██asor a payment in the")
+    print("\t\tamoun████ $1██000.00. In consideratio▓▓▓▓▓▓▓ch payment, Releas█r ag██es to accept the payment")
+    print("\t\tas full██nd c█mplete settlement a▓▓▓▓▓▓▓▓▓▓▓▓ion of any prese█t and██rospective claims.")
+    print("\t\t3. This██elease shall not be in any▓▓▓▓▓▓▓nstrued as an admissio█ by the Releasee that")
+    print("\t\tit has█a█ted wrongfully with respe▓▓▓▓▓ Releasor or any other preson█ that it admits")
+    print("\t\tliabi█it█ or responsibility at an▓▓time for any purpose, or that Re██asor has any rights")
+    print("\t\twhats█ev██ against the Releasee.  ▓                       ▓▓▓▓▓")
+    print("\t\t4. Th█s release shall ▒▒ binding u▓▓n the parties and th▓▓▓▓▓▓▓▓▓▓tive heirs, administrators,")
+    print("\t\tperso█al representat▒▒▒▒▒ executors, successors and a▓▓▓▓▓▓▓▓▓▓▓▓▓▓or has the authority to")
+    print("\t\trelea██ the Clai▒▒▒▒▒▒▒▒▒▒▒▒▒▒ assigned or trans▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ any other party. The")
+    print("\t\tprovisions of thi▒▒▒▒▒▒▒▒▒▒are severable. If an▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ to be invalid or")
+    print("\t\tunenforceable, it s▒▒▒▒▒not affect the validi▓▓▓▓▓▓▓▓▓▓▓▓▓▓bility of any other provision.")
+    print("\t\tThis Release consti▒▒▒es the entire agreement b▓▓▓▓▓▓▓▓▓▓ parties and supersedes any and")
+    print("\t\tall prior oral or ▒▒▒▒ten agreements or underst▓▓▓▓ngs between the parties.")
+    print("\n\n\tSIGN HERE:\n")
+    print("\tGOD")
+    print("\t______")
     input()
     os.system('cls')
 
@@ -142,7 +143,7 @@ stageDisplay = np.array([["I", "II", "III"], ["█", "▒▒", "▒"]])
 levelFlash = np.array([["I", "II", "III"], ["▒", "▒▒", "▒"]])
 
 playerInv = [["Shotgun"], ["SHOOTING YOURSELF WITH\nA BLANK SKIPS THE\nDEALER'S TURN"]]
-dealerInv = ["Shotgun"]
+dealerInv = [[], []]
 
 wasted = []
 wastedDisplay = ""
@@ -298,20 +299,21 @@ while True:
         os.system('cls')
         input(underline("MY TURN"))
         lastShell = deck[len(deck) - 1]
-        fired = deck.pop(0)
-        if random.randint(0, 1) == 1:
-            dealerAim = "dealer"
-        else:
-            dealerAim = "you"
-        if wasted == (live + blank) - 1:
+        if len(deck) == 1:
             if lastShell == 1:
                 dealerAim = "you"
             else:
                 dealerAim = "dealer"
+        else:        
+            if random.randint(0, 1) == 1:
+                dealerAim = "you"
+            else:
+                dealerAim = "dealer"
+        fired = deck.pop(0)
         if dealerAim == "dealer":
-            print("The Dealer Takes the shotgun, and turns it at himself.")
+            input("The Dealer Takes the shotgun, and turns it at himself.")
         else:
-            print("The Dealer Takes the shotgun, and turns it toward you.")
+            input("The Dealer Takes the shotgun, and turns it toward you.")
         results = shoot("dealer", dealerAim, fired, False)
         if dealerAim == "dealer":
             dealerLives = dealerLives - results[0]
@@ -388,6 +390,11 @@ for i in range(2):
         playerInv[0].append(items[0, itemDrawn])
         playerInv[1].append(items[1, itemDrawn])
         print(tab.tabulate(playerInv, headers="firstrow", tablefmt="orgtbl", stralign="center"))
+        print()
+        itemDrawn = random.randint(0, 4)
+        dealerInv[0].append(items[0, itemDrawn])
+        dealerInv[1].append(items[1, itemDrawn])
+        print(tab.tabulate(dealerInv, headers="firstrow", tablefmt="orgtbl", stralign="center"))
         input()
         os.system('cls')
 
@@ -415,6 +422,7 @@ while True:
         while not picked:
             os.system('cls')
             print(underline("\nYOUR TURN.\n"))
+            wastedDisplay = ""
             if len(wasted) >= 1:
                 print("SPENT SHELLS:")
                 for i in range(len(wasted)):
@@ -425,16 +433,26 @@ while True:
             print(tab.tabulate(playerInv, headers="firstrow", tablefmt="orgtbl", stralign="center"))
             playerOption = input().lower()
             os.system('cls')
-            if playerOption == "magnifying glass" and "Magnifying Glass" in playerInv[0, :]:
+            if playerOption == "magnifying glass" and "Magnifying Glass" in playerInv[0]:
                 glass()
-            elif playerOption == "cigarette pack" and "Cigarette Pack" in playerInv[0, :]:
+                playerInv[0].remove("Magnifying Glass")
+                playerInv[1].remove("CHECK THE CURRENT\nROUND IN THE CHAMBER.")
+            elif playerOption == "cigarette pack" and "Cigarette Pack" in playerInv[0]:
                 playerLives = playerLives + 1
-            elif playerOption == "beer" and "Beer" in playerInv[0, :]:
+                playerInv[0].remove("Cigarette Pack")
+                playerInv[1].remove("TAKES THE EDGE OFF.\nREGAIN 1 CHARGE.")
+            elif playerOption == "beer" and "Beer" in playerInv[0]:
                 wasted.append(beer(deck.pop(0)))
-            elif playerOption == "hand saw" and "Hand Saw" in playerInv[0, :]:
+                playerInv[0].remove("Beer")
+                playerInv[1].remove("YOU RACK THE SHOTGUN.\nENDS ROUND ON LAST SHELL.")
+            elif playerOption == "hand saw" and "Hand Saw" in playerInv[0]:
                 saw = True
-            elif playerOption == "handcuffs" and "Handcuffs" in playerInv[0, :]:
+                playerInv[0].remove("Hand Saw")
+                playerInv[1].remove("SHOTGUN DEALS 2 DAMAGE")
+            elif playerOption == "handcuffs" and "Handcuffs" in playerInv[0]:
                 handcuffed = True
+                playerInv[0].remove("Handcuffs")
+                playerInv[1].remove("DEALER SKIPS THE NEXT TURN.")
             if playerOption == "shotgun":
                 picked = True
                 while not shot:
@@ -462,5 +480,36 @@ while True:
             turn = 0
 
     if turn == 1:
-        print("dealer turn placeholder")
-        turn = 0
+        handcuffed = False
+        currentShell = deck[0]
+        if len(deck) == 1:
+            dealerKnown = True
+        else:
+            dealerKnown = False
+        while True:
+            if not dealerKnown and "Magnifying Glass" in dealerInv[0]:
+                glass("dealer")
+                print(underline("VERY INTERESTING..."))
+                dealerInv[0].remove("Magnifying Glass")
+                dealerInv[1].remove("CHECK THE CURRENT\nROUND IN THE CHAMBER.")
+                dealerKnown = True
+            if dealerKnown and "Hand Saw" in dealerInv[0] and currentShell == 1 and not saw:
+                saw = True
+                print(underline("I USE A SAW"))
+                dealerInv[0].remove("Hand Saw")
+                dealerInv[1].remove("SHOTGUN DEALS 2 DAMAGE")
+            if dealerLives < 4 and "Cigarette Pack" in dealerInv[0]:
+                dealerLives = dealerLives + 1
+                print(underline("I USE A CIGARETTE PACK"))
+                dealerInv[0].remove("Cigarette Pack")
+                dealerInv[1].remove("TAKES THE EDGE OFF.\nREGAIN 1 CHARGE.")
+            if currentShell == 0 and dealerKnown and not len(deck) == 1 and "Beer" in dealerInv[0]:
+                wasted.append(beer(deck.pop(0)))
+                print(underline("I USE A BEER"))
+                dealerInv[0].remove("Beer")
+                dealerInv[1].remove("YOU RACK THE SHOTGUN.\nENDS ROUND ON LAST SHELL.")
+            if not handcuffed and not len(deck) == 1 and "Handcuffs" in dealerInv[0]:
+                handcuffed = True
+                print(underline("I USE A HANDCUFFS"))
+                dealerInv[0].remove("Handcuffs")
+                dealerInv[1].remove("DEALER SKIPS THE NEXT TURN.")
