@@ -145,6 +145,8 @@ levelFlash = np.array([["I", "II", "III"], ["▒", "▒▒", "▒"]])
 playerInv = [["Shotgun"], ["SHOOTING YOURSELF WITH\nA BLANK SKIPS THE\nDEALER'S TURN"]]
 dealerInv = [[], []]
 
+dealerTurn = True
+
 wasted = []
 wastedDisplay = ""
 loaded = 0
@@ -482,34 +484,35 @@ while True:
     if turn == 1:
         handcuffed = False
         currentShell = deck[0]
-        if len(deck) == 1:
-            dealerKnown = True
-        else:
-            dealerKnown = False
-        while True:
-            if not dealerKnown and "Magnifying Glass" in dealerInv[0]:
-                glass("dealer")
-                print(underline("VERY INTERESTING..."))
-                dealerInv[0].remove("Magnifying Glass")
-                dealerInv[1].remove("CHECK THE CURRENT\nROUND IN THE CHAMBER.")
+        while dealerTurn:
+            if len(deck) == 1:
                 dealerKnown = True
-            if dealerKnown and "Hand Saw" in dealerInv[0] and currentShell == 1 and not saw:
-                saw = True
-                print(underline("I USE A SAW"))
-                dealerInv[0].remove("Hand Saw")
-                dealerInv[1].remove("SHOTGUN DEALS 2 DAMAGE")
-            if dealerLives < 4 and "Cigarette Pack" in dealerInv[0]:
-                dealerLives = dealerLives + 1
-                print(underline("I USE A CIGARETTE PACK"))
-                dealerInv[0].remove("Cigarette Pack")
-                dealerInv[1].remove("TAKES THE EDGE OFF.\nREGAIN 1 CHARGE.")
-            if currentShell == 0 and dealerKnown and not len(deck) == 1 and "Beer" in dealerInv[0]:
-                wasted.append(beer(deck.pop(0)))
-                print(underline("I USE A BEER"))
-                dealerInv[0].remove("Beer")
-                dealerInv[1].remove("YOU RACK THE SHOTGUN.\nENDS ROUND ON LAST SHELL.")
-            if not handcuffed and not len(deck) == 1 and "Handcuffs" in dealerInv[0]:
-                handcuffed = True
-                print(underline("I USE A HANDCUFFS"))
-                dealerInv[0].remove("Handcuffs")
-                dealerInv[1].remove("DEALER SKIPS THE NEXT TURN.")
+            else:
+                dealerKnown = False
+            while True:
+                if not dealerKnown and "Magnifying Glass" in dealerInv[0]:
+                    glass("dealer")
+                    print(underline("VERY INTERESTING..."))
+                    dealerInv[0].remove("Magnifying Glass")
+                    dealerInv[1].remove("CHECK THE CURRENT\nROUND IN THE CHAMBER.")
+                    dealerKnown = True
+                if dealerKnown and "Hand Saw" in dealerInv[0] and currentShell == 1 and not saw:
+                    saw = True
+                    print(underline("I USE A SAW"))
+                    dealerInv[0].remove("Hand Saw")
+                    dealerInv[1].remove("SHOTGUN DEALS 2 DAMAGE")
+                if dealerLives < 4 and "Cigarette Pack" in dealerInv[0]:
+                    dealerLives = dealerLives + 1
+                    print(underline("I USE A CIGARETTE PACK"))
+                    dealerInv[0].remove("Cigarette Pack")
+                    dealerInv[1].remove("TAKES THE EDGE OFF.\nREGAIN 1 CHARGE.")
+                if currentShell == 0 and dealerKnown and not len(deck) == 1 and "Beer" in dealerInv[0]:
+                    wasted.append(beer(deck.pop(0)))
+                    print(underline("I USE A BEER"))
+                    dealerInv[0].remove("Beer")
+                    dealerInv[1].remove("YOU RACK THE SHOTGUN.\nENDS ROUND ON LAST SHELL.")
+                if not handcuffed and not len(deck) == 1 and "Handcuffs" in dealerInv[0]:
+                    handcuffed = True
+                    print(underline("I USE A HANDCUFFS"))
+                    dealerInv[0].remove("Handcuffs")
+                    dealerInv[1].remove("DEALER SKIPS THE NEXT TURN.")
