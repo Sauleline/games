@@ -4,6 +4,7 @@ import os
 import tabulate as tab
 import numpy as np
 
+# Currently this only goes up to the player's turn on the 2nd round, in which items are first introduced.
 
 def underline(text):
     return "\033[4m" + text + "\033[0m"
@@ -139,6 +140,12 @@ blank = 2
 #▒, 0
 
 lose = False
+
+print("\n\n\n\t\t     BUCKSHOT\n\t\t     ROULETTE\n\n")
+print("\n\t\tA COMPUTER GAME\n\t\tBY MIKE KLUBINKA\n\n\t\tPORTED TO PYTHON\n\t\t  BY SAULELINE\n\n")
+if(input("\t\t      START\n\t\t      EXIT\n\n\t").lower() == "exit"):
+    exit()
+
 print("HEAVY (No Visuals, other than flashing lights) TWs FOR:")
 print("\t- Guns")
 print("\t- Shooting yourself (You are (mostly) fine)")
@@ -300,8 +307,7 @@ while True:
         print("YOU'RE LUCKY IT LEFT YOU WITH A CHARGE!")
         print("GET UP,", playerName, ". THE NIGHT IS YOUNG.")
         input()
-        lose = True
-        break
+        exit()
     else:
         for j in range(1):
             livesDisplay[1, 0] = ""
@@ -334,7 +340,6 @@ while True:
         input(underline("THEY ENTER THE CHAMBER IN A HIDDEN SEQUENCE"))
         turn = 0
 
-if not lose:
     stageDisplay = np.array([["I", "II", "III"], ["▒", "██", "▒"]])
     levelFlash = np.array([["I", "II", "III"], ["█", "▒", "▒"]])
 
@@ -362,74 +367,72 @@ if not lose:
         input()
         os.system('cls')
 
-    # MAKE FUNCTIONS FOR EACH ITEM
+dealerLives = 4
+playerLives = 4
 
-    dealerLives = 4
-    playerLives = 4
+for j in range(1):
+    livesDisplay[1, 0] = ""
+    livesDisplay[1, 1] = ""
+    for i in range(dealerLives):
+        livesDisplay[1, 0] += "*"
+    for i in range(playerLives):
+        livesDisplay[1, 1] += "*"
+    print(tab.tabulate(livesDisplay, headers="firstrow", tablefmt="fancy_grid", stralign="center"))
+    print(tab.tabulate(stageDisplay, headers="firstrow", tablefmt="fancy_grid", stralign="center"))
+input()
+turn = 0
 
-    for j in range(1):
-        livesDisplay[1, 0] = ""
-        livesDisplay[1, 1] = ""
-        for i in range(dealerLives):
-            livesDisplay[1, 0] += "*"
-        for i in range(playerLives):
-            livesDisplay[1, 1] += "*"
-        print(tab.tabulate(livesDisplay, headers="firstrow", tablefmt="fancy_grid", stralign="center"))
-        print(tab.tabulate(stageDisplay, headers="firstrow", tablefmt="fancy_grid", stralign="center"))
-    input()
-    turn = 0
-
-    while True:
-        shot = False
-        picked = False
-        saw = False
-        handcuffed = False
-        if turn == 0:
+while True:
+    shot = False
+    picked = False
+    saw = False
+    handcuffed = False
+    if turn == 0:
+        os.system('cls')
+        print(underline("\nYOUR TURN.\n"))
+        while not picked:
+            if len(wasted) >= 1:
+                print("SPENT SHELLS:")
+                for i in range(len(wasted)):
+                    wastedDisplay += wasted[i]
+                    wastedDisplay += " "
+                print(wastedDisplay)
+            print("Your options:")
+            print(tab.tabulate(playerInv, headers="firstrow", tablefmt="orgtbl", stralign="center"))
+            playerOption = input().lower()
             os.system('cls')
-            print(underline("\nYOUR TURN.\n"))
-            while not picked:
-                if len(wasted) >= 1:
-                    print("SPENT SHELLS:")
-                    for i in range(len(wasted)):
-                        wastedDisplay += wasted[i]
-                        wastedDisplay += " "
-                    print(wastedDisplay)
-                print("Your options:")
-                print(tab.tabulate(playerInv, headers="firstrow", tablefmt="orgtbl", stralign="center"))
-                playerOption = input().lower()
+            if playerOption == "shotgun":
+                picked = True
+                while not shot:
+                    playerAim = input("\n\n\tDEALER / YOU\n\n").lower()
+                    if playerAim == "you" or playerAim == "dealer":
+                        fired = deck.pop(0)
+                        shot = True
+                        results = (shoot("you", playerAim, fired, saw))
+                        if fired == 1:
+                            if playerAim == "dealer":
+                                dealerLives = dealerLives - results[0]
+                            else:
+                                playerLives = playerLives - results[0]
+                        wasted.append(results[2])
+                        turn = results[1]
+                    else:
+                        os.system('cls')
+                        input(underline("\nPICK."))
+                        os.system('cls')
+            elif playerOption == "magnifying glass" and "Magnifying Glass" in playerInv[0, :]:
+                glass()
+            elif playerOption == "cigarette pack" and "Cigarette Pack" in playerInv[0, :]:
+                playerLives = playerLives + cigs()
+            elif playerOption == "beer" and "Beer" in playerInv[0, :]:
+                wasted.append(beer(deck.pop(0)))
+            elif playerOption == "hand saw" and "Hand Saw" in playerInv[0, :]:
+                saw = True
+            elif playerOption == "handcuffs" and "Handcuffs" in playerInv[0, :]:
+                handcuffed = True
+            else:
                 os.system('cls')
-                if playerOption == "shotgun":
-                    picked = True
-                    while not shot:
-                        playerAim = input("\n\n\tDEALER / YOU\n\n").lower()
-                        if playerAim == "you" or playerAim == "dealer":
-                            fired = deck.pop(0)
-                            shot = True
-                            results = (shoot("you", playerAim, fired, saw))
-                            if fired == 1:
-                                if playerAim == "dealer":
-                                    dealerLives = dealerLives - results[0]
-                                else:
-                                    playerLives = playerLives - results[0]
-                            wasted.append(results[2])
-                            turn = results[1]
-                        else:
-                            os.system('cls')
-                            input(underline("\nPICK."))
-                            os.system('cls')
-                elif playerOption == "magnifying glass" and "Magnifying Glass" in playerInv[0, :]:
-                    glass()
-                elif playerOption == "cigarette pack" and "Cigarette Pack" in playerInv[0, :]:
-                    playerLives = playerLives + cigs()
-                elif playerOption == "beer" and "Beer" in playerInv[0, :]:
-                    wasted.append(beer(deck.pop(0)))
-                elif playerOption == "hand saw" and "Hand Saw" in playerInv[0, :]:
-                    saw = True
-                elif playerOption == "handcuffs" and "Handcuffs" in playerInv[0, :]:
-                    handcuffed = True
-                else:
-                    os.system('cls')
-                    input(underline("\nPICK."))
-                    os.system('cls')
-            if handcuffed:
-                turn = 0
+                input(underline("\nPICK."))
+                os.system('cls')
+        if handcuffed:
+            turn = 0
