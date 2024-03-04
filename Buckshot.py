@@ -9,7 +9,6 @@ import numpy as np
 def underline(text):
     return "\033[4m" + text + "\033[0m"
 
-
 def sayrounds(liveround, blankround):
     if liveround == 1 and blankround == 1:
         output = str((liveround, "LIVE ROUND.", blankround, "BLANK."))
@@ -25,7 +24,6 @@ def sayrounds(liveround, blankround):
     output = output.replace(")", "")
     return output
 
-
 def loadgundisplay(liveround, blankround):
     output = ""
     for p in range(liveround):
@@ -35,7 +33,6 @@ def loadgundisplay(liveround, blankround):
     output += "\n"
     return output
 
-
 def loadgun(liveround, blankround):
     output = []
     for p in range(liveround):
@@ -43,7 +40,6 @@ def loadgun(liveround, blankround):
     for p in range(blankround):
         output.append(0)
     return output
-
 
 def shoot(who, at, bullet, sawn):
     output = [0, 2, "waste"]
@@ -84,7 +80,6 @@ def shoot(who, at, bullet, sawn):
         output[1] = 1
     return output
 
-
 def glass():
     shell = deck[0]
     if shell == 1:
@@ -93,21 +88,47 @@ def glass():
         print("▒")
     return shell
 
-
-def cigs():
-    return 1
-
-
 def beer(bullet):
     if bullet == 1:
         return "█"
     else:
         return "▒"
 
+# This is here cause i can't be bothered to copy paste it down at where you draw it
+def godWaiver():
+    print("\n\n\tThis General Release (\"Release\") is made on 22 da█████████████████████████████████ at                       a")
+    print("\t████████████████████████████████ (\"Releasor\") and ████████████████████████████████████ (\"Releasee\").          a")
+    print("\t\t1. Releasor and anyone claiming on Releasor's behalf r██████████████████████scharges                  a")
+    print("\t\tReleasees and its affiliate████uccessors, officers, empl██████████████████ives,                       a")
+    print("\t\tpartners, agents and anyo████████ng through them (c█████████████████████eased Parties\")              a")
+    print("\t\tin their individual and/or█████orate capacities from any ████████claims, liabilities,                 a")
+    print("\t\tobligations, p██mises, agre██ents, disputes, demands, damages███auses of action of any                a")
+    print("\t\tn███re ███ kind, known or ██known, which Releasor has or ever ██d or may in the future                a")
+    print("\t\thav████████████leasees or any of the Released Parties arising o██ of or relating to: the              a")
+    print("\t\t██████████n of a contractual relationship between the Releasor a██ the Releasee (\"Claims\").           a")
+    print("\t\t████████ch███e for the release of Claims, Releasee will provide█Re██asor a payment in the             a")
+    print("\t\tamoun████ $1██000.00. In consideratio▓▓▓▓▓▓▓ch payment, Releas█r ag██es to accept the payment         a")
+    print("\t\tas full██nd c█mplete settlement a▓▓▓▓▓▓▓▓▓▓▓▓ion of any prese█t and██rospective claims.               a")
+    print("\t\t3. This██elease shall not be in any▓▓▓▓▓▓▓nstrued as an admissio█ by the Releasee that                a")
+    print("\t\tit has█a█ted wrongfully with respe▓▓▓▓▓ Releasor or any other preson█ that it admits                  a")
+    print("\t\tliabi█it█ or responsibility at an▓▓time for any purpose, or that Re██asor has any rights              a")
+    print("\t\twhats█ev██ against the Releasee.  ▓                       ▓▓▓▓▓                                       a")
+    print("\t\t4. Th█s release shall ▒▒ binding u▓▓n the parties and th▓▓▓▓▓▓▓▓▓▓tive heirs, administrators,         a")
+    print("\t\tperso█al representat▒▒▒▒▒ executors, successors and a▓▓▓▓▓▓▓▓▓▓▓▓▓▓or has the authority to            a")
+    print("\t\trelea██ the Clai▒▒▒▒▒▒▒▒▒▒▒▒▒▒ assigned or trans▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ any other party. The             a")
+    print("\t\tprovisions of thi▒▒▒▒▒▒▒▒▒▒are severable. If an▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ to be invalid or                   a")
+    print("\t\tunenforceable, it s▒▒▒▒▒not affect the validi▓▓▓▓▓▓▓▓▓▓▓▓▓▓bility of any other provision.             a")
+    print("\t\tThis Release consti▒▒▒es the entire agreement b▓▓▓▓▓▓▓▓▓▓ parties and supersedes any and              a")
+    print("\t\tall prior oral or ▒▒▒▒ten agreements or underst▓▓▓▓ngs between the parties.                           a")
+    print("\n\n\tSIGN HERE:                                                                                                    a\n")
+    print("\tGOD                                                                                                           a")
+    print("\t______                                                                                                        a")
+    input()
+    os.system('cls')
 
+# All the important variables.
 deck = []
 items = np.array([["Magnifying Glass", "Cigarette Pack", "Beer", "Hand Saw", "Handcuffs"], ["CHECK THE CURRENT\nROUND IN THE CHAMBER.", "TAKES THE EDGE OFF.\nREGAIN 1 CHARGE.", "YOU RACK THE SHOTGUN.\nENDS ROUND ON LAST SHELL.", "SHOTGUN DEALS 2 DAMAGE", "DEALER SKIPS THE NEXT TURN."]])
-
 
 playerName = ""
 playerNameDisplay = ""
@@ -139,13 +160,14 @@ live = 1
 blank = 2
 #▒, 0
 
-lose = False
+# All of the intro stuff is here
 
 print("\n\n\n\t\t     BUCKSHOT\n\t\t     ROULETTE\n\n")
 print("\n\t\tA COMPUTER GAME\n\t\tBY MIKE KLUBINKA\n\n\t\tPORTED TO PYTHON\n\t\t  BY SAULELINE\n\n")
 if(input("\t\t      START\n\t\t      EXIT\n\n\t").lower() == "exit"):
     exit()
 
+os.system('cls')
 print("HEAVY (No Visuals, other than flashing lights) TWs FOR:")
 print("\t- Guns")
 print("\t- Shooting yourself (You are (mostly) fine)")
@@ -199,6 +221,8 @@ for i in range(playerLives):
 
 os.system('cls')
 
+# Intro Over, Round 1.
+
 for i in range(len(playerName)):
     #waitTime = (random.randint(i + 1, i + 3) / 10)
     waitTime = (len(playerName)-(i+1))/100
@@ -228,7 +252,7 @@ os.system('cls')
 
 input(underline("\nI INSERT THE SHELLS IN AN UNKNOWN ORDER\n"))
 
-##ROUND 1
+#ROUND 1
 while True:
     shot = False
     picked = False
@@ -247,7 +271,6 @@ while True:
             print(tab.tabulate(playerInv, headers="firstrow", tablefmt="orgtbl", stralign="center"))
             playerOption = input().lower()
             os.system('cls')
-            print(wasted)
             if playerOption == "shotgun":
                 picked = True
                 while not shot:
@@ -303,7 +326,6 @@ while True:
         break
     if playerLives <= 0:
         os.system('cls')
-        time.sleep(3)
         print("YOU'RE LUCKY IT LEFT YOU WITH A CHARGE!")
         print("GET UP,", playerName, ". THE NIGHT IS YOUNG.")
         input()
@@ -340,26 +362,28 @@ while True:
         input(underline("THEY ENTER THE CHAMBER IN A HIDDEN SEQUENCE"))
         turn = 0
 
-    stageDisplay = np.array([["I", "II", "III"], ["▒", "██", "▒"]])
-    levelFlash = np.array([["I", "II", "III"], ["█", "▒", "▒"]])
+stageDisplay = np.array([["I", "II", "III"], ["▒", "██", "▒"]])
+levelFlash = np.array([["I", "II", "III"], ["█", "▒", "▒"]])
 
-    for i in range(3):
-        waitTime = 0.05
-        os.system('cls')
-        print(tab.tabulate(levelFlash, headers="firstrow", tablefmt="fancy_grid", stralign="center"))
-        time.sleep(waitTime)
-        os.system('cls')
-        print(tab.tabulate(stageDisplay, headers="firstrow", tablefmt="fancy_grid", stralign="center"))
-
-    input()
+for i in range(3):
+    waitTime = 0.05
     os.system('cls')
-
-    input(underline("\nLETS MAKE THIS A LITTLE MORE INTERESTING..."))
-    input(underline("\nTWO ITEMS EACH"))
-    input(underline("\nMORE ITEMS BEFORE EACH LOAD"))
+    print(tab.tabulate(levelFlash, headers="firstrow", tablefmt="fancy_grid", stralign="center"))
+    time.sleep(waitTime)
     os.system('cls')
+    print(tab.tabulate(stageDisplay, headers="firstrow", tablefmt="fancy_grid", stralign="center"))
 
-    for i in range(2):
+input()
+os.system('cls')
+print(underline("\nLETS MAKE THIS A LITTLE MORE INTERESTING..."))
+print(underline("\nTWO ITEMS EACH"))
+input(underline("\nMORE ITEMS BEFORE EACH LOAD"))
+
+os.system('cls')
+godWaiver()
+
+for i in range(2):
+    if not len(playerInv[1]) >= 8:
         itemDrawn = random.randint(0, 4)
         playerInv[0].append(items[0, itemDrawn])
         playerInv[1].append(items[1, itemDrawn])
@@ -388,9 +412,9 @@ while True:
     saw = False
     handcuffed = False
     if turn == 0:
-        os.system('cls')
-        print(underline("\nYOUR TURN.\n"))
         while not picked:
+            os.system('cls')
+            print(underline("\nYOUR TURN.\n"))
             if len(wasted) >= 1:
                 print("SPENT SHELLS:")
                 for i in range(len(wasted)):
@@ -401,6 +425,16 @@ while True:
             print(tab.tabulate(playerInv, headers="firstrow", tablefmt="orgtbl", stralign="center"))
             playerOption = input().lower()
             os.system('cls')
+            if playerOption == "magnifying glass" and "Magnifying Glass" in playerInv[0, :]:
+                glass()
+            elif playerOption == "cigarette pack" and "Cigarette Pack" in playerInv[0, :]:
+                playerLives = playerLives + 1
+            elif playerOption == "beer" and "Beer" in playerInv[0, :]:
+                wasted.append(beer(deck.pop(0)))
+            elif playerOption == "hand saw" and "Hand Saw" in playerInv[0, :]:
+                saw = True
+            elif playerOption == "handcuffs" and "Handcuffs" in playerInv[0, :]:
+                handcuffed = True
             if playerOption == "shotgun":
                 picked = True
                 while not shot:
@@ -420,19 +454,13 @@ while True:
                         os.system('cls')
                         input(underline("\nPICK."))
                         os.system('cls')
-            elif playerOption == "magnifying glass" and "Magnifying Glass" in playerInv[0, :]:
-                glass()
-            elif playerOption == "cigarette pack" and "Cigarette Pack" in playerInv[0, :]:
-                playerLives = playerLives + cigs()
-            elif playerOption == "beer" and "Beer" in playerInv[0, :]:
-                wasted.append(beer(deck.pop(0)))
-            elif playerOption == "hand saw" and "Hand Saw" in playerInv[0, :]:
-                saw = True
-            elif playerOption == "handcuffs" and "Handcuffs" in playerInv[0, :]:
-                handcuffed = True
             else:
                 os.system('cls')
                 input(underline("\nPICK."))
                 os.system('cls')
         if handcuffed:
             turn = 0
+
+    if turn == 1:
+        print("dealer turn placeholder")
+        turn = 0
