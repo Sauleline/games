@@ -496,23 +496,46 @@ while True:
                     dealerInv[0].remove("Magnifying Glass")
                     dealerInv[1].remove("CHECK THE CURRENT\nROUND IN THE CHAMBER.")
                     dealerKnown = True
-                if dealerKnown and "Hand Saw" in dealerInv[0] and currentShell == 1 and not saw:
+                elif dealerKnown and "Hand Saw" in dealerInv[0] and currentShell == 1 and not saw:
                     saw = True
                     print(underline("I USE A SAW"))
                     dealerInv[0].remove("Hand Saw")
                     dealerInv[1].remove("SHOTGUN DEALS 2 DAMAGE")
-                if dealerLives < 4 and "Cigarette Pack" in dealerInv[0]:
+                elif dealerLives < 4 and "Cigarette Pack" in dealerInv[0]:
                     dealerLives = dealerLives + 1
                     print(underline("I USE A CIGARETTE PACK"))
                     dealerInv[0].remove("Cigarette Pack")
                     dealerInv[1].remove("TAKES THE EDGE OFF.\nREGAIN 1 CHARGE.")
-                if currentShell == 0 and dealerKnown and not len(deck) == 1 and "Beer" in dealerInv[0]:
+                elif currentShell == 0 and dealerKnown and not len(deck) == 1 and "Beer" in dealerInv[0]:
                     wasted.append(beer(deck.pop(0)))
                     print(underline("I USE A BEER"))
                     dealerInv[0].remove("Beer")
                     dealerInv[1].remove("YOU RACK THE SHOTGUN.\nENDS ROUND ON LAST SHELL.")
-                if not handcuffed and not len(deck) == 1 and "Handcuffs" in dealerInv[0]:
+                elif not handcuffed and not len(deck) == 1 and "Handcuffs" in dealerInv[0]:
                     handcuffed = True
                     print(underline("I USE A HANDCUFFS"))
                     dealerInv[0].remove("Handcuffs")
                     dealerInv[1].remove("DEALER SKIPS THE NEXT TURN.")
+                else:
+                    if len(deck) == 1:
+                        if lastShell == 1:
+                            dealerAim = "you"
+                        else:
+                            dealerAim = "dealer"
+                    else:        
+                        if random.randint(0, 1) == 1:
+                            dealerAim = "you"
+                        else:
+                            dealerAim = "dealer"
+                    fired = deck.pop(0)
+                    if dealerAim == "dealer":
+                        input("The Dealer Takes the shotgun, and turns it at himself.")
+                    else:
+                        input("The Dealer Takes the shotgun, and turns it toward you.")
+                    results = shoot("dealer", dealerAim, fired, False)
+                    if dealerAim == "dealer":
+                        dealerLives = dealerLives - results[0]
+                    else:
+                        playerLives = playerLives - results[0]
+                    wasted.append(results[2])
+                    turn = results[1]
