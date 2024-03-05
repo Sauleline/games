@@ -97,6 +97,7 @@ def beer(bullet):
 
 # This is here cause i can't be bothered to copy paste it down at where you draw it
 def godWaiver():
+    print("\nGeneral Release of Liability".upper())
     print("\n\n\tThis General Release (\"Release\") is made on 22 da█████████████████████████████████ at")
     print("\t████████████████████████████████ (\"Releasor\") and ████████████████████████████████████ (\"Releasee\").")
     print("\t\t1. Releasor and anyone claiming on Releasor's behalf r██████████████████████scharges")
@@ -190,6 +191,7 @@ input(underline("\nPLEASE SIGN THE WAIVER.\n"))
 os.system('cls')
 
 for i in range(1):
+    print("\nGeneral Release of Liability".upper())
     print("\n\n\tThis General Release (\"Release\") is made on 22 day of January, 2018 between ████████ at \n\t████████████████████████████████ (\"Releasor\") and ████████ at ████████████████████████ (\"Releasee\").\n")
     print("\n\t\t1. Releasor and anyone claiming on Releasor's behalf releases and forever discharges \n\t\tReleasees and its affiliates, successors, officers, employees, representatives, \n\t\tpartners, agents and anyone claiming through them (collectively, the \"Released Parties\") \n\t\tin their individual and/or corporate capacities from any and all claims, liabilities, \n\t\tobligations, promises, agreements, disputes, demands, damages, causes of action of any \n\t\tnature and kind, known or unknown, which Releasor has or ever had or may in the future \n\t\thave against Releasees or any of the Released Parties arising out of or relating to: the \n\t\ttermination of a contractual relationship between the Releasor and the Releasee (\"Claims\").")
     print("\n\t\t2. In exchange for the release of Claims, Releasee will provide Releasor a payment in the \n\t\tamount of $10,000.00. In consideration of such payment, Releasor agrees to accept the payment \n\t\tas full and complete settlement and satisfaction of any present and prospective claims.")
@@ -489,7 +491,7 @@ while True:
                 dealerKnown = True
             else:
                 dealerKnown = False
-            while True:
+            for i in range(len(dealerInv[0])):
                 if not dealerKnown and "Magnifying Glass" in dealerInv[0]:
                     glass("dealer")
                     print(underline("VERY INTERESTING..."))
@@ -511,31 +513,31 @@ while True:
                     print(underline("I USE A BEER"))
                     dealerInv[0].remove("Beer")
                     dealerInv[1].remove("YOU RACK THE SHOTGUN.\nENDS ROUND ON LAST SHELL.")
+                    dealerKnown = False
                 elif not handcuffed and not len(deck) == 1 and "Handcuffs" in dealerInv[0]:
                     handcuffed = True
                     print(underline("I USE A HANDCUFFS"))
                     dealerInv[0].remove("Handcuffs")
                     dealerInv[1].remove("DEALER SKIPS THE NEXT TURN.")
+                if len(deck) == 1:
+                    if lastShell == 1:
+                        dealerAim = "you"
+                    else:
+                        dealerAim = "dealer"
+                else:        
+                    if random.randint(0, 1) == 1:
+                        dealerAim = "you"
+                    else:
+                        dealerAim = "dealer"
+                fired = deck.pop(0)
+                if dealerAim == "dealer":
+                    input("The Dealer Takes the shotgun, and turns it at himself.")
                 else:
-                    if len(deck) == 1:
-                        if lastShell == 1:
-                            dealerAim = "you"
-                        else:
-                            dealerAim = "dealer"
-                    else:        
-                        if random.randint(0, 1) == 1:
-                            dealerAim = "you"
-                        else:
-                            dealerAim = "dealer"
-                    fired = deck.pop(0)
-                    if dealerAim == "dealer":
-                        input("The Dealer Takes the shotgun, and turns it at himself.")
-                    else:
-                        input("The Dealer Takes the shotgun, and turns it toward you.")
-                    results = shoot("dealer", dealerAim, fired, False)
-                    if dealerAim == "dealer":
-                        dealerLives = dealerLives - results[0]
-                    else:
-                        playerLives = playerLives - results[0]
-                    wasted.append(results[2])
-                    turn = results[1]
+                    input("The Dealer Takes the shotgun, and turns it toward you.")
+                results = shoot("dealer", dealerAim, fired, False)
+                if dealerAim == "dealer":
+                    dealerLives = dealerLives - results[0]
+                else:
+                    playerLives = playerLives - results[0]
+                wasted.append(results[2])
+                turn = results[1]
