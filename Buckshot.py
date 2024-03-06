@@ -415,6 +415,7 @@ for j in range(1):
     print(tab.tabulate(livesDisplay, headers="firstrow", tablefmt="fancy_grid", stralign="center"))
     print(tab.tabulate(stageDisplay, headers="firstrow", tablefmt="fancy_grid", stralign="center"))
 input()
+
 turn = 0
 
 while True:
@@ -422,6 +423,9 @@ while True:
     picked = False
     saw = False
     handcuffed = False
+
+    if len(deck) == 0 
+
     if turn == 0:
         while not picked:
             os.system('cls')
@@ -519,7 +523,7 @@ while True:
                     print(underline("I USE A HANDCUFFS"))
                     dealerInv[0].remove("Handcuffs")
                     dealerInv[1].remove("DEALER SKIPS THE NEXT TURN.")
-                if len(deck) == 1:
+                if dealerKnown:
                     if lastShell == 1:
                         dealerAim = "you"
                     else:
